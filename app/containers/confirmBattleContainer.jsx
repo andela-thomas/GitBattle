@@ -1,4 +1,4 @@
-import React, {PropTypes, Component } from 'react';
+import React, {PropTypes, Component} from 'react';
 import ConfirmBattle from '../components/confirmBattle.jsx';
 import githubHelpers from '../utils/github-helper.jsx';
 
@@ -11,27 +11,28 @@ export default class ConfirmBattleContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading:true,
-      playersInfo:[]
+      isLoading: true,
+      playersInfo: []
     };
 
-    this.handleInitiateBattle = this.handleInitiateBattle.bind(this);
+    this.handleInitiateBattle = this
+      .handleInitiateBattle
+      .bind(this);
 
   }
 
   componentDidMount() {
     var query = this.props.location.query;
-    githubHelpers.getPlayersInfo([query.playerOne, query.playerTwo])
+    githubHelpers
+      .getPlayersInfo([query.playerOne, query.playerTwo])
       .then((players) => {
-        if(!players) {
-          return this.context.router.push({
-            pathname:'/'
-          });
+        if (!players) {
+          return this
+            .context
+            .router
+            .push({pathname: '/'});
         }
-        return this.setState({
-          isLoading:false,
-          playersInfo:players
-        });
+        return this.setState({isLoading: false, playersInfo: players});
       })
       .catch(error => {
         console.log('Error', error);
@@ -39,12 +40,15 @@ export default class ConfirmBattleContainer extends Component {
   }
 
   handleInitiateBattle() {
-    this.context.router.push({
-      pathname: '/results',
-      state: {
-        playersInfo: this.state.playersInfo
-      }
-    });
+    this
+      .context
+      .router
+      .push({
+        pathname: '/results',
+        state: {
+          playersInfo: this.state.playersInfo
+        }
+      });
   }
 
   render() {
@@ -53,7 +57,6 @@ export default class ConfirmBattleContainer extends Component {
         isLoading={this.state.isLoading}
         playersInfo={this.state.playersInfo}
         onInitiateBattle={this.handleInitiateBattle}
-      />
-    );
+      />);
   }
 }

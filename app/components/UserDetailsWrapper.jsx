@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const UserDetailsWrapper  = (props) => {
+const UserDetailsWrapper = (props) => {
   return (
     <div className='col-sm-6'>
       <p className='lead'>{props.header}</p>
@@ -10,7 +10,7 @@ const UserDetailsWrapper  = (props) => {
 };
 
 UserDetailsWrapper.propType = {
-  header: PropTypes.string.isRequired,
+  header: PropTypes.string.isRequired
 };
 
 export default UserDetailsWrapper;

@@ -9,7 +9,7 @@ function Main(props) {
         transitionName="appear"
         transitionEnterTimeout={300}
         transitionLeaveTimeout={300}>
-          {React.cloneElement(props.children, {key: props.location.pathname})}
+        {React.cloneElement(props.children, {key: props.location.pathname})}
       </ReactCSSTransitionGroup>
     </div>
   );

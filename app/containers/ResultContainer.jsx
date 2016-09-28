@@ -13,21 +13,14 @@ export default class ResultsContainer extends Component {
   }
 
   componentDidMount() {
-    githubHelpers.battle(this.props.location.state.playersInfo)
-      .then(function (scores) {
-        this.setState({
-          scores: scores,
-          isLoading: false
-        });
+    githubHelpers
+      .battle(this.props.location.state.playersInfo)
+      .then(function(scores) {
+        this.setState({scores: scores, isLoading: false});
       }.bind(this));
   }
 
   render() {
-    return (
-      <Results
-        isLoading={this.state.isLoading}
-        playersInfo={this.props.location.state.playersInfo}
-        scores={this.state.scores} />
-    );
+    return (<Results isLoading={this.state.isLoading} playersInfo={this.props.location.state.playersInfo} scores={this.state.scores}/>);
   }
 }
